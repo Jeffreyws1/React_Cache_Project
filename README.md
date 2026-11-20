@@ -96,8 +96,8 @@ Checked manually:
 
 ## Known Limitations
 
-- **Automated tests.** Five tests cover required exports, cache reuse, concurrent request deduplication, serialization and hydration, and cache clearing. All pass. Additional coverage for fetch failures and React hook behavior is recommended.
-- **Open audit findings.** Dependency installation reported 2 moderate and 2 high vulnerabilities. These need case-by-case fixes; `npm audit fix --force` was skipped to avoid potentially breaking upgrades.
-- **Simple cache lifecycle.** The cache currently has no expiration, invalidation policy, or memory limit. Server-side cache isolation should also be improved to prevent data sharing between concurrent requests. These are important considerations before production deployment.
-- **Bundle size.** The server bundle is approximately 1.1 MB and the browser bundle approximately 452 KB. Code splitting and bundle analysis could help reduce both.
-- **No CI.** A workflow running installation, type-checking, builds, and automated tests is a recommended next step once tests are implemented.
+- **Automated tests.** Five automated tests cover library exports, cache reuse, concurrent request deduplication, cache serialization and restoration, and cache clearing. All five tests pass. Additional coverage for fetch failures, React hook behavior, and SSR edge cases would improve reliability.
+- **Dependency security.** The latest dependency audit reported 2 moderate and 2 high vulnerabilities. These require individual review and remediation. Potentially breaking dependency upgrades were intentionally avoided.
+- **Cache lifecycle.** The cache does not currently implement expiration, automatic invalidation, or memory limits. Server-side cache isolation should be improved to prevent data sharing between concurrent requests. These enhancements are recommended before production deployment.
+- **Bundle optimization.** The server bundle is approximately 1.1 MB, and the browser bundle is approximately 452 KB. Bundle analysis, tree shaking, and code splitting could help reduce production bundle sizes.
+- **Continuous integration.** Automated tests, TypeScript validation, and production builds are available through `npm run check` and have passed locally. A GitHub Actions workflow could automate these checks on future commits and pull requests.
